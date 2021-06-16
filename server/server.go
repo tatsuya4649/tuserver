@@ -5,6 +5,5 @@ import (
 )
 
 func Server(){
-	fmt.Println("hello world")
 }
 
