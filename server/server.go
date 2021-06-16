@@ -3,6 +3,7 @@ package server
 import (
 	"fmt"
 	"net"
+	"io"
 )
 
 func tcpServer(){
@@ -11,6 +12,7 @@ func tcpServer(){
 func Server(port int32) error{
 	var portString string = fmt.Sprintf(":%d",port)
 	ln,err := net.Listen("tcp",portString)
+	defer ln.Close()
 	if err != nil{
 		return err
 	}
@@ -29,8 +31,11 @@ func handler(con net.Conn,buflen int64){
 	var b []byte = make([]byte,buflen)
 	for {
 		n,err:=con.Read(b)
-		if n==0||err!=nil{
-			fmt.Println(err)
+		if err!=nil{
+			/* close */
+			if err == io.EOF{
+				return
+			}
 			return
 		}
 		n,err=con.Write(b[:n])

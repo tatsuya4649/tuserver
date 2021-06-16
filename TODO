@@ -1,4 +1,6 @@
 
 * receive port number and start up server
 
+* echo serve
+
 * test client and server communication
