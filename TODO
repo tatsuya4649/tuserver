@@ -1,6 +1,6 @@
 
-* receive port number and start up server
-
-* echo serve
-
 * test client and server communication
+
+* tcp udp cli startup
+
+* tcp udp heart bearts
