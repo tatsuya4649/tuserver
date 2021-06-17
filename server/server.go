@@ -126,12 +126,10 @@ func udpServer(address,port string,worker,bufsize int64){
 	}
 	info,err := TUNetParse(conn)
 	for {
-		
 		wch<-0
 		buf := make([]byte,bufsize)
 		_,remote,err := conn.ReadFromUDP(buf)
 		if err != nil{
-			conn.Close()
 			continue
 		}
 		remote_address,remote_port,err := net.SplitHostPort(remote.String())
