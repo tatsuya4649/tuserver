@@ -1,6 +1,4 @@
 
-* test client and server communication
-
-* tcp udp cli startup
+* udp serv/cli startup
 
 * tcp udp heart bearts
