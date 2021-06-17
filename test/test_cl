@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# start up Client
+CLIENT="../cli"
+if [ ! -d $CLIENT ]; then
+	echo "$CLIENT nothing..."
+fi
+cd $CLIENT
+go test -v

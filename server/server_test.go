@@ -1,8 +1,10 @@
 package server
 
-
-import "testing"
+import (
+	"testing"
+	"github.com/tatsuya4649/tuserver/test"
+)
 
 func TestServer(t *testing.T){
-	Server(8080)
+	Server(test.TestAddress,test.TestPort)
 }

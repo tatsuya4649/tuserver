@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# start up Server
+SERVER="../server"
+CLIENT="../cli"
+if [ ! -d $SERVER ]; then
+	echo "$SERVER nothing..."
+fi
+cd $SERVER
+go test -v
+

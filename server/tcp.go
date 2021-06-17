@@ -4,6 +4,7 @@ import (
 	"net"
 	"os"
 	"log"
+	"fmt"
 )
 
 func tcpHandler(conn *net.TCPConn,info *TUNetInfo,wch *chan int64){
@@ -18,9 +19,9 @@ func tcpHandler(conn *net.TCPConn,info *TUNetInfo,wch *chan int64){
 /*  tcpServer received server address,port number,
  *  worker count (work threads)
  */
-func tcpServer(address string,port string,worker int64){
+func tcpServer(address string,port int32,worker int64){
 	wch := make(chan int64,worker)
-	addport := net.JoinHostPort(address,port)
+	addport := net.JoinHostPort(address,fmt.Sprint(port))
 	addr,err := net.ResolveTCPAddr("tcp",addport)
 	if err!=nil{
 		log.Fatal(err)

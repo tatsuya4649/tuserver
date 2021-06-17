@@ -1,7 +1,10 @@
 package cli
 
-import "testing"
+import (
+	"testing"
+	"github.com/tatsuya4649/tuserver/test"
+)
 
 func TestCli(t *testing.T){
-	Cli()
+	Cli(test.TestAddress,test.TestPort,100)
 }
