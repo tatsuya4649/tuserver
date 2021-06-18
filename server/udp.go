@@ -8,7 +8,7 @@ import (
 	"strconv"
 )
 
-func udpHandler(conn *net.UDPConn,info *TUNetInfo,wch *chan int64){
+func udpHandler(conn *net.UDPConn,info *TUNetInfo,buffer []byte,wch *chan int64){
 	defer worker_end(wch)
 	/* DO ANYTHING */
 	fmt.Println("Success,UDP")
@@ -49,6 +49,6 @@ func udpServer(address string,port int32,worker,bufsize int64){
 		}
 		info.RemoteHost = remote_address
 		info.RemotePort = remop
-		go udpHandler(conn,&info,&wch)
+		go udpHandler(conn,&info,buf,&wch)
 	}
 }

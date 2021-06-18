@@ -41,13 +41,13 @@ func udpCli(addr string,port int32,data interface{}){
 	_,err = conn.Write([]byte{1,2,4})
 }
 
-func unixCli(path string,data interface{}){
-	address,err := net.ResolveUnixAddr("unix",path)
+func unixGen(path string,data interface{},network string){
+	address,err := net.ResolveUnixAddr(network,path)
 	if err!=nil{
 		log.Fatal(err)
 		os.Exit(1)
 	}
-	conn,err := net.DialUnix("unix",nil,address)
+	conn,err := net.DialUnix(network,nil,address)
 	if err!=nil{
 		log.Fatal(err)
 		os.Exit(1)
@@ -55,6 +55,14 @@ func unixCli(path string,data interface{}){
 	defer conn.Close()
 	/* connect to server */
 	_,err = conn.Write([]byte{1,2,4})
+}
+
+func unixCli(path string,data interface{}){
+	unixGen(path,data,"unix")
+}
+
+func unixDatagramCli(path string,data interface{}){
+	unixGen(path,data,"unixgram")
 }
 
 func Cli(addr string,port int32,data interface{},network string){
@@ -65,6 +73,8 @@ func Cli(addr string,port int32,data interface{},network string){
 		udpCli(addr,port,data)
 	case "unix":
 		unixCli(addr,data)
+	case "unixgram":
+		unixDatagramCli(addr,data)
 	default:
 		fmt.Printf("%s must be \"tcp\" or \"udp\"!",network)
 		os.Exit(1)

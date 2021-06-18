@@ -17,7 +17,11 @@ func TestServer(t *testing.T){
 		})
 		t.Run("Unix server",func(t *testing.T){
 			t.Parallel()
-			Server(test.TestPath,test.TestPort,"unix")
+			Server(test.TestUnixPath,test.TestPort,"unix")
+		})
+		t.Run("Unix Datagram server",func(t *testing.T){
+			t.Parallel()
+			Server(test.TestUnixDatagramPath,test.TestPort,"unixgram")
 		})
 	})
 }

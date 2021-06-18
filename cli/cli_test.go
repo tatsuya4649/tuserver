@@ -17,7 +17,11 @@ func TestCli(t *testing.T){
 		})
 		t.Run("UNIX Client",func(t *testing.T){
 			t.Parallel()
-			Cli(test.TestPath,test.DummyPort,100,"unix")
+			Cli(test.TestUnixPath,test.DummyPort,100,"unix")
+		})
+		t.Run("UNIX Datagram Client",func(t *testing.T){
+			t.Parallel()
+			Cli(test.TestUnixDatagramPath,test.DummyPort,100,"unixgram")
 		})
 	})
 }
