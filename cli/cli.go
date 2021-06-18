@@ -40,6 +40,14 @@ func udpCli(addr string,port int32,data interface{}){
 	/* connect to server */
 }
 
-func Cli(addr string,port int32,data interface{}){
-	tcpCli(addr,port,data)
+func Cli(addr string,port int32,data interface{},network string){
+	switch network{
+	case "tcp":
+		tcpCli(addr,port,data)
+	case "udp":
+		udpCli(addr,port,data)
+	default:
+		fmt.Printf("%s must be \"tcp\" or \"udp\"!",network)
+		os.Exit(1)
+	}
 }

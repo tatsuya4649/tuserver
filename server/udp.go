@@ -17,7 +17,7 @@ func udpHandler(conn *net.UDPConn,info *TUNetInfo,wch *chan int64){
 	return
 }
 
-func udpServer(address,port string,worker,bufsize int64){
+func udpServer(address string,port int32,worker,bufsize int64){
 	wch := make(chan int64,worker)
 	addport := net.JoinHostPort(address,fmt.Sprint(port))
 	addr,err := net.ResolveUDPAddr("udp",addport)
