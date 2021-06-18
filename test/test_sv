@@ -4,24 +4,29 @@
 SERVER="../server"
 CLIENT="../cli"
 TEST="../test"
-SOCK="test.sock"
+UNIX_SOCK="test_unix.sock"
+UNIX_DATAGRAM_SOCK="test_datagram_unix.sock"
 
 # delete unix domain socket
-function del_domain
+function del_unix_domain
 {
-	if [ -e "$TEST/$SOCK" ]; then
-		echo "delete $TEST/$SOCK"
-		rm -f "$TEST/$SOCK"
+	if [ -e "$TEST/$UNIX_SOCK" ]; then
+		echo "delete $TEST/$UNIX_SOCK"
+		rm -f "$TEST/$UNIX_SOCK"
+	fi
+	if [ -e "$TEST/$UNIX_DATAGRAM_SOCK" ]; then
+		echo "delete $TEST/$UNIX_DATAGRAM_SOCK"
+		rm -f "$TEST/$UNIX_DATAGRAM_SOCK"
 	fi
 }
 
 
 # test All network server
-del_domain
+del_unix_domain
 if [ ! -d $SERVER ]; then
 	echo "$SERVER nothing..."
 fi
 cd $SERVER
 go test -v
 
-del_domain
+del_unix_domain

@@ -13,6 +13,8 @@ func Server(addr string,port int32,network string){
 		udpServer(addr,port,1,1000)
 	case "unix":
 		unixServer(addr,1)
+	case "unixgram":
+		unixDatagramServer(addr,1,1000)
 	default:
 		fmt.Printf("%s must be \"tcp\" or \"udp\"!",network)
 		os.Exit(1)
