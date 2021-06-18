@@ -11,7 +11,8 @@ import (
 func udpHandler(conn *net.UDPConn,info *TUNetInfo,wch *chan int64){
 	defer worker_end(wch)
 	/* DO ANYTHING */
-	fmt.Println(*info)
+	fmt.Println("Success,UDP")
+	fmt.Println(info)
 
 	conn.Close()
 	return
