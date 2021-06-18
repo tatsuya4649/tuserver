@@ -10,7 +10,8 @@ import (
 func tcpHandler(conn *net.TCPConn,info *TUNetInfo,wch *chan int64){
 	defer worker_end(wch)
 	/* DO ANYTHING */
-
+	fmt.Println("Success,TCP")
+	fmt.Println(info)
 
 	conn.Close()
 	return
