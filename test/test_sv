@@ -3,9 +3,25 @@
 # start up Server
 SERVER="../server"
 CLIENT="../cli"
+TEST="../test"
+SOCK="test.sock"
+
+# delete unix domain socket
+function del_domain
+{
+	if [ -e "$TEST/$SOCK" ]; then
+		echo "delete $TEST/$SOCK"
+		rm -f "$TEST/$SOCK"
+	fi
+}
+
+
+# test All network server
+del_domain
 if [ ! -d $SERVER ]; then
 	echo "$SERVER nothing..."
 fi
 cd $SERVER
 go test -v
 
+del_domain
