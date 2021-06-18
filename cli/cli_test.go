@@ -15,5 +15,9 @@ func TestCli(t *testing.T){
 			t.Parallel()
 			Cli(test.TestAddress,test.TestPort,100,"udp")
 		})
+		t.Run("UNIX Client",func(t *testing.T){
+			t.Parallel()
+			Cli(test.TestPath,test.DummyPort,100,"unix")
+		})
 	})
 }

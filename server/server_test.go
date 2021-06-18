@@ -15,5 +15,9 @@ func TestServer(t *testing.T){
 			t.Parallel()
 			Server(test.TestAddress,test.TestPort,"udp")
 		})
+		t.Run("Unix server",func(t *testing.T){
+			t.Parallel()
+			Server(test.TestPath,test.TestPort,"unix")
+		})
 	})
 }
