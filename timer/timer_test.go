@@ -7,6 +7,6 @@ import (
 
 func TestTimer(t *testing.T){
 	t.Run("Timer",func(t *testing.T){
-		Timer(1000)
+		Timer(1000,10,TestTock,10)
 	})
 }
